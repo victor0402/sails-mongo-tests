@@ -1,0 +1,7 @@
+--require should ./test/setup
+--reporter spec
+--recursive
+--slow 300
+--timeout 10000
+--colors
+--ui bdd
