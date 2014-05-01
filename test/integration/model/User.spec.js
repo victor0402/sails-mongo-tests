@@ -16,9 +16,15 @@ describe('User', function () {
 					.populate('address')
 					.populate('role')
 					.exec(function (err, user) {
-						var address = user.address;
-						var preferences = user.preferences;
-						var role = user.role;
+
+						expect(user).to.have.property('preferences').
+							and.to.be.a('array').
+							and.to.have.length(2);
+
+						expect(user).to.have.property('role');
+
+						expect(user).to.have.property('address');
+
 						done()
 					})
 			})
@@ -43,16 +49,16 @@ describe('User', function () {
 							user.save(function (err, data) {
 								validateSavedData(err, data);
 
-
-
 								Address.create({street: 'foo street', user: user.id}).exec(function (err, address) {
 									validateSavedData(err, address);
 
-									fnExecuteTest(user.id)
+									user.address = address.id;
+									user.save(function (err, userUpdated) {
+										validateSavedData(err, userUpdated);
+										fnExecuteTest(user.id)
+									})
 								})
 							});
-
-
 						})
 					});
 				})
