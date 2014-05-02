@@ -31,6 +31,31 @@ describe('User', function () {
 				})
 		});
 
+		it('should be possible get an address using the user to find it', function (done) {
+			User.findOne({name: userName})
+				.exec(function (err, user) {
+					validateSavedData(err, user);
+
+					Address.findOne({user: user.id}).exec(function (err, address) {
+						validateSavedData(err, address);
+						done()
+					})
+				})
+		});
+
+		it('should be possible get an role using the roleId in the user', function (done) {
+			User.findOne({name: userName})
+				.exec(function (err, user) {
+					validateSavedData(err, user);
+
+					Role.findOne(user.role).exec(function (err, role) {
+						validateSavedData(err, role);
+						done()
+					})
+				})
+		});
+
+
 		function createData(fnExecuteTest) {
 			Preference.create({name: 'pref 1'}).exec(function (err, pref1) {
 				validateSavedData(err, pref1);
