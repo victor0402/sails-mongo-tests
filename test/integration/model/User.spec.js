@@ -1,33 +1,34 @@
 describe('User', function () {
 
 	before(function (done) {
-
-		helper.cleanDb(db, done)
+		helper.cleanDb(db, done);
 	});
 
 	describe('when create a user with all attributes', function () {
 
+		before(function (done) {
+			createData(isDone(done))
+		});
+
 		var userName = 'user';
 
 		it('should be possible get the user with all properties populated', function (done) {
-			createData(function (userId) {
-				User.findOne(userId)
-					.populate('preferences')
-					.populate('address')
-					.populate('role')
-					.exec(function (err, user) {
+			User.findOne({name: userName})
+				.populate('preferences')
+				.populate('address')
+				.populate('role')
+				.exec(function (err, user) {
 
-						expect(user).to.have.property('preferences').
-							and.to.be.a('array').
-							and.to.have.length(2);
+					expect(user).to.have.property('preferences').
+						and.to.be.a('array').
+						and.to.have.length(2);
 
-						expect(user).to.have.property('role');
+					expect(user).to.have.property('role');
 
-						expect(user).to.have.property('address');
+					expect(user).to.have.property('address');
 
-						done()
-					})
-			})
+					done()
+				})
 		});
 
 		function createData(fnExecuteTest) {
