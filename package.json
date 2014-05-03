@@ -26,8 +26,7 @@
 		"lodash": "^2.4.1",
 		"redis": "^0.10.1",
 		"rootpath": "^0.1.1",
-		"async": "^0.7.0",
-		"waterline": "0.10.0-rc10"
+		"async": "^0.7.0"
 	},
 	"devDependencies": {
 		"nodeunit": "*",
