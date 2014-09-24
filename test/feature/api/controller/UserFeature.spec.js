@@ -7,7 +7,7 @@ describe('User', function () {
     describe('when create a user with a role', function () {
         var userName = 'user';
 
-        //TODO fail...
+        //FAIL...
         //sails/waterline bug??
         it('should be possible to update the populated user via rest api', function (done) {
 
@@ -37,6 +37,7 @@ describe('User', function () {
             });
         });
 
+        //PASS
         it('should be possible to update the user without populate via rest api', function (done) {
 
             //create a fresh user with a role
