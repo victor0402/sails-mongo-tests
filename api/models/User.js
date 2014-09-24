@@ -5,7 +5,8 @@ module.exports = {
 		name: { type: 'string', required: true },
 
 		role: {
-			model: 'Role'
+			model: 'Role',
+            required: true
 		},
 
 		address: {

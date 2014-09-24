@@ -16,6 +16,10 @@ isDone = function (done) {
 Sails = require('sails/lib/app');
 app = Sails();
 
+global.getApp = function () {
+    return app.ws.server;
+};
+
 expect = require('chai').expect;
 
 helper = require('./helper');
