@@ -6,7 +6,7 @@ module.exports = {
 
 		role: {
 			model: 'Role',
-            required: true
+                        required: true
 		},
 
 		address: {
