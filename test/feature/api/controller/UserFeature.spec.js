@@ -4,7 +4,7 @@ describe('User', function () {
         helper.cleanDb(db, done);
     });
 
-    describe('when create a user with a role', function () {
+    describe('when create an user with a role', function () {
         var userName = 'user';
 
         //FAIL...
