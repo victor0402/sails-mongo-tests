@@ -41,14 +41,15 @@ var testConfig = {
 			database: 'sails-tests-dev'
 		}
 	},
-	connection: 'testMongodbServer'
+	connection: 'testMongodbServer',
+	migrate: 'drop'
 };
 
 /**
  * Before ALL the test bootstrap the server
  */
 before(function (done) {
-	// start sails server and for tests and user the global sails variable
+	// start sails app for tests
 	app.lift(testConfig, function (err, sails) {
 		if (err)
 			done(err);
